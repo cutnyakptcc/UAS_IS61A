@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>Dashmix - Bootstrap 5 Admin Template &amp; UI Framework</title>
+    <title>@yield('title')</title>
 
     <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
     <meta name="author" content="pixelcave">
@@ -32,65 +32,10 @@
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css"> -->
     <!-- END Stylesheets -->
+    @yield('css')
   </head>
 
   <body>
-    <!-- Page Container -->
-    <!--
-      Available classes for #page-container:
-
-      GENERIC
-
-        'remember-theme'                            Remembers active color theme and dark mode between pages using localStorage when set through
-                                                    - Theme helper buttons [data-toggle="theme"],
-                                                    - Layout helper buttons [data-toggle="layout" data-action="dark_mode_[on/off/toggle]"]
-                                                    - ..and/or Dashmix.layout('dark_mode_[on/off/toggle]')
-
-      SIDEBAR & SIDE OVERLAY
-
-        'sidebar-r'                                 Right Sidebar and left Side Overlay (default is left Sidebar and right Side Overlay)
-        'sidebar-mini'                              Mini hoverable Sidebar (screen width > 991px)
-        'sidebar-o'                                 Visible Sidebar by default (screen width > 991px)
-        'sidebar-o-xs'                              Visible Sidebar by default (screen width < 992px)
-        'sidebar-dark'                              Dark themed sidebar
-
-        'side-overlay-hover'                        Hoverable Side Overlay (screen width > 991px)
-        'side-overlay-o'                            Visible Side Overlay by default
-
-        'enable-page-overlay'                       Enables a visible clickable Page Overlay (closes Side Overlay on click) when Side Overlay opens
-
-        'side-scroll'                               Enables custom scrolling on Sidebar and Side Overlay instead of native scrolling (screen width > 991px)
-
-      HEADER
-
-        ''                                          Static Header if no class is added
-        'page-header-fixed'                         Fixed Header
-
-
-      FOOTER
-
-        ''                                          Static Footer if no class is added
-        'page-footer-fixed'                         Fixed Footer (please have in mind that the footer has a specific height when is fixed)
-
-      HEADER STYLE
-
-        ''                                          Classic Header style if no class is added
-        'page-header-dark'                          Dark themed Header
-        'page-header-glass'                         Light themed Header with transparency by default
-                                                    (absolute position, perfect for light images underneath - solid light background on scroll if the Header is also set as fixed)
-        'page-header-glass page-header-dark'         Dark themed Header with transparency by default
-                                                    (absolute position, perfect for dark images underneath - solid dark background on scroll if the Header is also set as fixed)
-
-      MAIN CONTENT LAYOUT
-
-        ''                                          Full width Main Content if no class is added
-        'main-content-boxed'                        Full width Main Content with a specific maximum width (screen width > 1200px)
-        'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
-
-      DARK MODE
-
-        'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
-    -->
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
       <!-- Side Overlay-->
       <aside id="side-overlay">
@@ -106,7 +51,7 @@
 
               <!-- User Info -->
               <div class="ms-2">
-                <a class="text-white fw-semibold" href="be_pages_generic_profile.html">George Taylor</a>
+                <a class="text-white fw-semibold" href="be_pages_generic_profile.html">{{ Auth::user()->name }}</a>
                 <div class="text-white-75 fs-sm">Full Stack Developer</div>
               </div>
               <!-- END User Info -->
@@ -463,34 +408,14 @@
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="so-profile-name">Name</label>
-                        <input type="text" class="form-control" id="so-profile-name" name="so-profile-name" value="George Taylor">
+                        <input type="text" class="form-control" id="so-profile-name" name="so-profile-name" value="{{ Auth::user()->name }}">
                       </div>
                       <div class="mb-4">
                         <label class="form-label" for="so-profile-email">Email</label>
-                        <input type="email" class="form-control" id="so-profile-email" name="so-profile-email" value="g.taylor@example.com">
+                        <input type="email" class="form-control" id="so-profile-email" name="so-profile-email" value="{{ Auth::user()->email }}">
                       </div>
                     </div>
                     <!-- END Personal -->
-
-                    <!-- Password Update -->
-                    <div class="block-content block-content-sm block-content-full bg-body">
-                      <span class="text-uppercase fs-sm fw-bold">Password Update</span>
-                    </div>
-                    <div class="block-content block-content-full">
-                      <div class="mb-4">
-                        <label class="form-label" for="so-profile-password">Current Password</label>
-                        <input type="password" class="form-control" id="so-profile-password" name="so-profile-password">
-                      </div>
-                      <div class="mb-4">
-                        <label class="form-label" for="so-profile-new-password">New Password</label>
-                        <input type="password" class="form-control" id="so-profile-new-password" name="so-profile-new-password">
-                      </div>
-                      <div class="mb-4">
-                        <label class="form-label" for="so-profile-new-password-confirm">Confirm New Password</label>
-                        <input type="password" class="form-control" id="so-profile-new-password-confirm" name="so-profile-new-password-confirm">
-                      </div>
-                    </div>
-                    <!-- END Password Update -->
 
                     <!-- Options -->
                     <div class="block-content block-content-sm block-content-full bg-body">
@@ -541,17 +466,6 @@
       <!-- END Side Overlay -->
 
       <!-- Sidebar -->
-      <!--
-        Sidebar Mini Mode - Display Helper classes
-
-        Adding 'smini-hide' class to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
-        Adding 'smini-show' class to an element will make it visible (opacity: 1) when the sidebar is in mini mode
-          If you would like to disable the transition animation, make sure to also add the 'no-transition' class to your element
-
-        Adding 'smini-hidden' to an element will hide it when the sidebar is in mini mode
-        Adding 'smini-visible' to an element will show it (display: inline-block) only when the sidebar is in mini mode
-        Adding 'smini-visible-block' to an element will show it (display: block) only when the sidebar is in mini mode
-      -->
       <nav id="sidebar" aria-label="Main Navigation">
         <!-- Side Header -->
         <div class="bg-header-dark">
@@ -600,37 +514,51 @@
         <div class="js-sidebar-scroll">
           <!-- Side Navigation -->
           <div class="content-side">
-            <ul class="nav-main">
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
-                  <i class="nav-main-link-icon fa fa-location-arrow"></i>
-                  <span class="nav-main-link-name">Dashboard</span>
-                  <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
-                </a>
-              </li>
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
-                  <i class="nav-main-link-icon fa fa-location-arrow"></i>
-                  <span class="nav-main-link-name">1</span>
-                  <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
-                </a>
-              </li>
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
-                  <i class="nav-main-link-icon fa fa-location-arrow"></i>
-                  <span class="nav-main-link-name">2</span>
-                  <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
-                </a>
-              </li>
-              <li class="nav-main-item">
-                <a class="nav-main-link" href="be_pages_dashboard.html">
-                  <i class="nav-main-link-icon fa fa-location-arrow"></i>
-                  <span class="nav-main-link-name">3</span>
-                  <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
-                </a>
-              </li>
-            </ul>
-          </div>
+    <ul class="nav-main">
+        <li class="nav-main-item">
+            <a class="nav-main-link" href="be_pages_dashboard.html">
+                <i class="nav-main-link-icon fa fa-tachometer-alt"></i> <!-- Ganti ikon dashboard sesuai kebutuhan -->
+                <span class="nav-main-link-name">Dashboard</span>
+                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
+            </a>
+        </li>
+        <li class="nav-main-item">
+            <a class="nav-main-link" href="be_pages_employees.html"> <!-- Ganti href dengan link untuk halaman karyawan -->
+                <i class="nav-main-link-icon fa fa-users"></i> <!-- Ganti ikon karyawan sesuai kebutuhan -->
+                <span class="nav-main-link-name">Karyawan</span>
+                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
+            </a>
+        </li>
+        <li class="nav-main-item">
+            <a class="nav-main-link" href="be_pages_sales.html"> <!-- Ganti href dengan link untuk halaman penjualan -->
+                <i class="nav-main-link-icon fa fa-chart-line"></i> <!-- Ganti ikon penjualan sesuai kebutuhan -->
+                <span class="nav-main-link-name">Penjualan</span>
+                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
+            </a>
+        </li>
+        <li class="nav-main-item">
+            <a class="nav-main-link" href="be_pages_customers.html"> <!-- Ganti href dengan link untuk halaman customer -->
+                <i class="nav-main-link-icon fa fa-users"></i> <!-- Ganti ikon customer sesuai kebutuhan -->
+                <span class="nav-main-link-name">Customer</span>
+                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
+            </a>
+        </li>
+        <li class="nav-main-item">
+            <a class="nav-main-link" href="be_pages_services.html"> <!-- Ganti href dengan link untuk halaman service -->
+                <i class="nav-main-link-icon fa fa-cogs"></i> <!-- Ganti ikon service sesuai kebutuhan -->
+                <span class="nav-main-link-name">Service</span>
+                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
+            </a>
+        </li>
+        <li class="nav-main-item">
+            <a class="nav-main-link" href="be_pages_transactions.html"> <!-- Ganti href dengan link untuk halaman transaksi -->
+                <i class="nav-main-link-icon fa fa-exchange-alt"></i> <!-- Ganti ikon transaksi sesuai kebutuhan -->
+                <span class="nav-main-link-name">Transaksi</span>
+                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
+            </a>
+        </li>
+    </ul>
+</div>
           <!-- END Side Navigation -->
         </div>
         <!-- END Sidebar Scrolling -->
@@ -693,88 +621,14 @@
                   <!-- END Side Overlay -->
 
                   <div role="separator" class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="op_auth_signin.html">
-                    <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Sign Out
+                  <a class="dropdown-item" href="{{ route('login') }}" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
                   </a>
                 </div>
               </div>
             </div>
             <!-- END User Dropdown -->
-
-            <!-- Notifications Dropdown -->
-            <div class="dropdown d-inline-block">
-              <button type="button" class="btn btn-alt-secondary" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-fw fa-bell"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
-                <div class="bg-primary-dark rounded-top fw-semibold text-white text-center p-3">
-                  Notifications
-                </div>
-                <ul class="nav-items my-2">
-                  <li>
-                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                      <div class="flex-shrink-0 mx-3">
-                        <i class="fa fa-fw fa-check-circle text-success"></i>
-                      </div>
-                      <div class="flex-grow-1 fs-sm pe-2">
-                        <div class="fw-semibold">App was updated to v5.6!</div>
-                        <div class="text-muted">3 min ago</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                      <div class="flex-shrink-0 mx-3">
-                        <i class="fa fa-fw fa-user-plus text-info"></i>
-                      </div>
-                      <div class="flex-grow-1 fs-sm pe-2">
-                        <div class="fw-semibold">New Subscriber was added! You now have 2580!</div>
-                        <div class="text-muted">10 min ago</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                      <div class="flex-shrink-0 mx-3">
-                        <i class="fa fa-fw fa-times-circle text-danger"></i>
-                      </div>
-                      <div class="flex-grow-1 fs-sm pe-2">
-                        <div class="fw-semibold">Server backup failed to complete!</div>
-                        <div class="text-muted">30 min ago</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                      <div class="flex-shrink-0 mx-3">
-                        <i class="fa fa-fw fa-exclamation-circle text-warning"></i>
-                      </div>
-                      <div class="flex-grow-1 fs-sm pe-2">
-                        <div class="fw-semibold">You are running out of space. Please consider upgrading your plan.</div>
-                        <div class="text-muted">1 hour ago</div>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                      <div class="flex-shrink-0 mx-3">
-                        <i class="fa fa-fw fa-plus-circle text-primary"></i>
-                      </div>
-                      <div class="flex-grow-1 fs-sm pe-2">
-                        <div class="fw-semibold">New Sale! + $30</div>
-                        <div class="text-muted">2 hours ago</div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-                <div class="p-2 border-top">
-                  <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)">
-                    <i class="fa fa-fw fa-eye opacity-50 me-1"></i> View All
-                  </a>
-                </div>
-              </div>
-            </div>
-            <!-- END Notifications Dropdown -->
 
             <!-- Toggle Side Overlay -->
             <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -826,7 +680,7 @@
         <div class="bg-body-light">
           <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
-              <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">Main Title</h1>
+              <h1 class="flex-grow-1 fs-3 fw-semibold my-2 my-sm-3">@yield('judul')</h1>
               <nav class="flex-shrink-0 my-2 my-sm-0 ms-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item">Pages</li>
@@ -841,8 +695,8 @@
 
         <!-- Page Content -->
         <div class="content">
-          <h2 class="content-heading">Page Subtitle</h2>
-          <p>Your content..</p>
+          <h2 class="content-heading">@yield('subjudul')</h2>
+          @yield('content')
         </div>
         <!-- END Page Content -->
       </main>
@@ -853,10 +707,10 @@
         <div class="content py-0">
           <div class="row fs-sm">
             <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-end">
-              Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://pixelcave.com" target="_blank">pixelcave</a>
+              Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://pixelcave.com" target="_blank">Cut Nyak Putro</a>
             </div>
             <div class="col-sm-6 order-sm-1 text-center text-sm-start">
-              <a class="fw-semibold" href="https://pixelcave.com/products/dashmix" target="_blank">Dashmix 5.9</a> &copy; <span data-toggle="year-copy"></span>
+              <a class="fw-semibold" href="https://pixelcave.com/products/dashmix" target="_blank">Friend Cellular</a> &copy; <span data-toggle="year-copy"></span>
             </div>
           </div>
         </div>
@@ -872,5 +726,6 @@
       webpack is putting everything together at assets/_js/main/app.js
     -->
     <script src="assets/js/dashmix.app.min.js"></script>
+    @yield('js')
   </body>
 </html>
