@@ -517,44 +517,38 @@
     <ul class="nav-main">
         <li class="nav-main-item">
             <a class="nav-main-link" href="be_pages_dashboard.html">
-                <i class="nav-main-link-icon fa fa-tachometer-alt"></i> <!-- Ganti ikon dashboard sesuai kebutuhan -->
+                <i class="nav-main-link-icon fa fa-tachometer-alt"></i> 
                 <span class="nav-main-link-name">Dashboard</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" href="be_pages_employees.html"> <!-- Ganti href dengan link untuk halaman karyawan -->
-                <i class="nav-main-link-icon fa fa-users"></i> <!-- Ganti ikon karyawan sesuai kebutuhan -->
+            <a class="nav-main-link" href="/karyawan">
+                <i class="nav-main-link-icon fa fa-users"></i> 
                 <span class="nav-main-link-name">Karyawan</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" href="be_pages_sales.html"> <!-- Ganti href dengan link untuk halaman penjualan -->
-                <i class="nav-main-link-icon fa fa-chart-line"></i> <!-- Ganti ikon penjualan sesuai kebutuhan -->
+            <a class="nav-main-link" href="be_pages_sales.html"> 
+                <i class="nav-main-link-icon fa fa-chart-line"></i> 
                 <span class="nav-main-link-name">Penjualan</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" href="be_pages_customers.html"> <!-- Ganti href dengan link untuk halaman customer -->
-                <i class="nav-main-link-icon fa fa-users"></i> <!-- Ganti ikon customer sesuai kebutuhan -->
+            <a class="nav-main-link" href="be_pages_customers.html"> 
+                <i class="nav-main-link-icon fa fa-users"></i> 
                 <span class="nav-main-link-name">Customer</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" href="be_pages_services.html"> <!-- Ganti href dengan link untuk halaman service -->
-                <i class="nav-main-link-icon fa fa-cogs"></i> <!-- Ganti ikon service sesuai kebutuhan -->
+            <a class="nav-main-link" href="be_pages_services.html"> 
+                <i class="nav-main-link-icon fa fa-cogs"></i> 
                 <span class="nav-main-link-name">Service</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
             </a>
         </li>
         <li class="nav-main-item">
-            <a class="nav-main-link" href="be_pages_transactions.html"> <!-- Ganti href dengan link untuk halaman transaksi -->
-                <i class="nav-main-link-icon fa fa-exchange-alt"></i> <!-- Ganti ikon transaksi sesuai kebutuhan -->
+            <a class="nav-main-link" href="be_pages_transactions.html"> 
+                <i class="nav-main-link-icon fa fa-exchange-alt"></i>
                 <span class="nav-main-link-name">Transaksi</span>
-                <span class="nav-main-link-badge badge rounded-pill bg-primary"></span>
             </a>
         </li>
     </ul>
