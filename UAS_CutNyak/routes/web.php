@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +18,5 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Data 
-Route::get('/karyawan/', [KaryawanController::class, 'index'])->middleware('auth');
-Route::get('/karyawan/form/', [KaryawanController::class, 'create'])->middleware('auth');
-Route::post('/karyawan/store/', [KaryawanController::class, 'store'])->middleware('auth');
-Route::get('/karyawan/edit/{id}', [KaryawanController::class, 'edit'])->middleware('auth');
-Route::put('/karyawan/{id}', [KaryawanController::class, 'update'])->middleware('auth');
-Route::delete('/karyawan/{id}', [KaryawanController::class, 'destroy'])->middleware('auth');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
