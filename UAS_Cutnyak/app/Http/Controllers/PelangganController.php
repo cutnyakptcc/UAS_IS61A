@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Pelanggan;
 
 class PelangganController extends Controller
 {
@@ -11,7 +11,9 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $nomor = 1;
+        $pel = Pelanggan::all();
+        return view('pelanggan.index',compact('nomor','pel'));
     }
 
     /**
@@ -19,7 +21,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        //
+        return view('/pelanggan/form');
     }
 
     /**
@@ -27,7 +29,13 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pel = new Pelanggan;
+        $pel->nm_p = $request->nm_p;
+        $pel->no_p = $request->no_p;
+        $pel->alamat = $request->alamat;
+        $pel->save();
+
+        return redirect('/pelanggan/');
     }
 
     /**
@@ -43,7 +51,8 @@ class PelangganController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pel = Pelanggan::find($id);
+        return view('pelanggan.edit',compact('$pel'));
     }
 
     /**
@@ -51,7 +60,13 @@ class PelangganController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pel = Pelanggan::find($id);
+        $pel->nm_p = $request->nm_p;
+        $pel->no_p = $request->no_p;
+        $pel->alamat = $request->alamat;
+        $pel->save();
+
+        return redirect('/pelanggan/');
     }
 
     /**
@@ -59,6 +74,9 @@ class PelangganController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pel = Pelanggan::find($id);
+        $pel->delete();
+
+        return redirect('/pelanggan/');
     }
 }
