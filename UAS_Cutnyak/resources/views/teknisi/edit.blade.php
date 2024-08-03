@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('title', 'Friend Celluler || Edit Pelanggan')
-@section('judul', 'Pelanggan')
-@section('subjudul', 'Form Edit Pelanggan')
+@section('title', 'Friend Celluler || Edit Teknisi')
+@section('judul', 'Teknisi')
+@section('subjudul', 'Form Edit teknisi')
 @section('css')
 <!-- Icons -->
 <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
@@ -22,23 +22,23 @@
 
     <div class="card-tools">
     <div class="card-body">
-        <form method="post" action="/pelanggan/{{$pel->id}}">
+        <form method="post" action="/teknisi/{{$tek->id}}">
             @method('PUT')
             @csrf
             <div class="mb-3">
-                <label class="form-label">Nama Pelanggan</label>
-                <input type="text" readonly value="{{$pel->nm_p}}" class="form-control" name="nm_p">
+                <label class="form-label">Nama Teknisi</label>
+                <input type="text" readonly value="{{$tek->nm_tek}}" class="form-control" name="nm_tek">
             </div>
             <div class="mb-3">
                 <label class="form-label">Nomor Handphone</label>
-                <input type="text" value="{{$pel->no_p}}" class="form-control" name="no_p">
+                <input type="text" value="{{$tek->no_tek}}" class="form-control" name="no_tek">
             </div>
             <div class="mb-3">
-                <label class="form-label">Alamat Pelanggan</label>
-                <input type="text" value="{{$pel->alamat}}" class="form-control" name="alamat">
+                <label class="form-label">Alamat Teknisi</label>
+                <input type="text" value="{{$tek->alamat_tek}}" class="form-control" name="alamat_tek">
             </div>
             <button type="submit" class="btn btn-primary">Edit Data</button>
-            <a href="/pelanggan" class="btn btn-secondary">Kembali</a>
+            <a href="/teknisi" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
     <!-- /.card-body -->

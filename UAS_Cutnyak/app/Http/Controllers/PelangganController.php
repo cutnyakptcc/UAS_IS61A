@@ -21,7 +21,7 @@ class PelangganController extends Controller
      */
     public function create()
     {
-        return view('/pelanggan/form');
+        return view("pelanggan.form");
     }
 
     /**
@@ -52,7 +52,7 @@ class PelangganController extends Controller
     public function edit(string $id)
     {
         $pel = Pelanggan::find($id);
-        return view('pelanggan.edit',compact('$pel'));
+        return view('pelanggan.edit',compact('pel'));
     }
 
     /**

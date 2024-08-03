@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('title','Friend Celluler || Pelanggan')
-@section('judul','Pelanggan')
-@section('subjudul','Data Pelanggan')
+@section('title','Friend Celluler || Teknisi')
+@section('judul','Teknisi')
+@section('subjudul','Data Teknisi')
 @section('css')
 <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
@@ -31,61 +31,58 @@
               <!-- DataTables init on table by adding .js-dataTable-buttons class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
               <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
                 <thead>
-                  <tr>
-                    <th>Nomor</th>
-                    <th>Nama Pelanggan</th>
-                    <th>Nomor Hanphone</th>
-                    <th>Alamat Pelanggan</th>
-                    <th>Action</th>
-                  </tr>
+                    <tr>
+                        <th>Nomor</th>
+                        <th>Nama Teknisi</th>
+                        <th>Nomor Hanphone</th>
+                        <th>Alamat Teknisi</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    @forelse ($pel as $item)
-                  <tr>
-                    <td>{{$nomor++}}</td>
-                    <td>{{$item->nm_p}}</td>
-                    <td>{{$item->no_p}}</td>
-                    <td>{{$item->alamat}}</td>
-                    <td>
-                        <a href="/pelanggan/edit/{{$item->id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil-alt"></i></a>
-
-                        <button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#hapus{{$item->id}}">
-                          <i class="fa fa-trash"></i>
-                      </button>
-                      
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="hapus{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Peringatan</h1>
-                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                      Yakin ingin menghapus data Pelanggan <b>{{$item->nm_p}}</b>?
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                      <form action="/pelanggan/{{$item->id}}" method="post">
-                                          @csrf
-                                          @method('DELETE')
-                                          <button type="submit" class="btn btn-primary">Hapus</button>
-                                      </form>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>                      
-                    </td>
-                  </tr>
-                  @empty
-                        <tr>
-                            <td colspan="5">Tidak Ada Data</td>
-                        </tr>
-                @endforelse
+                    @foreach ($tek as $item)
+                    <tr>
+                        <td>{{ $nomor++ }}</td>
+                        <td>{{ $item->nm_tek }}</td>
+                        <td>{{ $item->no_tek }}</td>
+                        <td>{{ $item->alamat_tek }}</td>
+                        <td>
+                            <a href="/teknisi/edit/{{ $item->id }}" class="btn btn-info btn-xs"><i class="fa fa-pencil-alt"></i></a>
+                            <button type="button" class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#hapus{{ $item->id }}">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <div class="modal fade" id="hapus{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Peringatan</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Yakin ingin menghapus data Teknisi <b>{{ $item->nm_tek }}</b>?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <form action="/teknisi/{{ $item->id }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-primary">Hapus</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                    @if($tek->isEmpty())
+                    <tr>
+                        <td colspan="5">Tidak Ada Data</td>
+                    </tr>
+                    @endif
                 </tbody>
-              </table>
-              <a href="/pelanggan/form/" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
+            </table>
+            <a href="/teknisi/form/" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
             </div>
           </div>
           <!-- END Dynamic Table with Export Buttons -->

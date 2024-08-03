@@ -2,4 +2,4 @@
 @section('title','Dashboard')
 @section('judul','Dashboard')
 @section('subjudul','Data Keseluruhan')
-@section('content')
+@section('content')               

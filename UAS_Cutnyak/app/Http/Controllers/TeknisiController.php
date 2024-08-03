@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Teknisi;
 
 class TeknisiController extends Controller
 {
@@ -11,7 +12,9 @@ class TeknisiController extends Controller
      */
     public function index()
     {
-        //
+        $nomor = 1;
+        $tek = Teknisi::all();
+        return view('teknisi.index',compact('nomor','tek'));
     }
 
     /**
@@ -19,7 +22,7 @@ class TeknisiController extends Controller
      */
     public function create()
     {
-        //
+        return view("teknisi.form");
     }
 
     /**
@@ -27,7 +30,13 @@ class TeknisiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tek = new Teknisi;
+        $tek->nm_tek = $request->nm_tek;
+        $tek->no_tek = $request->no_tek;
+        $tek->alamat_tek = $request->alamat_tek;
+        $tek->save();
+
+        return redirect('/teknisi/');
     }
 
     /**
@@ -43,7 +52,8 @@ class TeknisiController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tek = Teknisi::find($id);
+        return view('teknisi.edit',compact('tek'));
     }
 
     /**
@@ -51,7 +61,13 @@ class TeknisiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tek = Teknisi::find($id);
+        $tek->nm_tek = $request->nm_tek;
+        $tek->no_tek = $request->no_tek;
+        $tek->alamat_tek = $request->alamat_tek;
+        $tek->save();
+
+        return redirect('/teknisi/');
     }
 
     /**
@@ -59,6 +75,9 @@ class TeknisiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tek = Teknisi::find($id);
+        $tek->delete();
+
+        return redirect('/teknisi/');
     }
 }

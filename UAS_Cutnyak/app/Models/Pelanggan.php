@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pelanggan extends Model
 {
-    use HasFactory;
+   // Definisikan relasi ke model Riwayat
+   public function riwayats()
+   {
+       return $this->hasMany(Riwayat::class, 'teknisis_id');
+   }
 }

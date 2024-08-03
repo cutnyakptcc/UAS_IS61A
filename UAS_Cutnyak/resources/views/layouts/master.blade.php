@@ -530,7 +530,7 @@
           <div class="content-side">
             <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/">
+                <a class="nav-main-link" href="/home">
                   <i class="nav-main-link-icon fa fa-tachometer-alt"></i>
                   <span class="nav-main-link-name">Dashboard</span>
                 </a>
@@ -542,21 +542,21 @@
                 </a>
               </li>
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/teknisi/">
+                <a class="nav-main-link" href="/teknisi">
                   <i class="nav-main-link-icon fa fa-user-cog"></i>
                   <span class="nav-main-link-name">Teknisi</span>
                 </a>
               </li>
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/riwayat/">
-                  <i class="nav-main-link-icon fa fa-history"></i>
-                  <span class="nav-main-link-name">Riwayat</span>
+                <a class="nav-main-link" href="/transaksi">
+                  <i class="nav-main-link-icon fa fa-exchange-alt"></i>
+                  <span class="nav-main-link-name">Transaksi</span>
                 </a>
               </li>
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/transaksi/">
-                  <i class="nav-main-link-icon fa fa-exchange-alt"></i>
-                  <span class="nav-main-link-name">Transaksi</span>
+                <a class="nav-main-link" href="/riwayat">
+                  <i class="nav-main-link-icon fa fa-history"></i>
+                  <span class="nav-main-link-name">Riwayat</span>
                 </a>
               </li>
             </ul>

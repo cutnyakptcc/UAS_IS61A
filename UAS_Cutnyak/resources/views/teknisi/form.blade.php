@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('title', 'Friend Celluler || Tambah Pelanggan')
-@section('judul', 'Pelanggan')
-@section('subjudul', 'Form Tambah Pelanggan')
+@section('title', 'Friend Celluler || Tambah Teknisi')
+@section('judul', 'Teknisi')
+@section('subjudul', 'Form Tambah Teknisi')
 
 @section('css')
 <!-- Icons -->
@@ -19,25 +19,25 @@
 @section('content')
 <div class="block block-rounded">
     <div class="block-header block-header-default">
-        <h3 class="block-title">Form Tambah Pelanggan</h3>
+        <h3 class="block-title">Form Tambah Teknisi</h3>
     </div>
     <div class="block-content block-content-full">
-        <form action="/pelanggan/store/" method="POST">
+        <form action="/teknisi/store/" method="POST">
             @csrf
             <div class="form-group">
-                <label for="nm_p">Nama Pelanggan</label>
-                <input type="text" class="form-control" id="nm_p" name="nm_p"  required>
+                <label for="nm_tek">Nama Tekinisi</label>
+                <input type="text" class="form-control" id="nm_tek" name="nm_tek"  required>
             </div>
             <div class="form-group">
-                <label for="no_p">Nomor Handphone</label>
-                <input type="text" class="form-control" id="no_p" name="no_p"  required>
+                <label for="no_tek">Nomor Handphone</label>
+                <input type="text" class="form-control" id="no_tek" name="no_tek"  required>
             </div>
             <div class="form-group">
-                <label for="alamat">Alamat Pelanggan</label>
-                <textarea class="form-control" id="alamat" name="alamat" rows="4"  required></textarea>
+                <label for="alamat_tek">Alamat Teknisi</label>
+                <textarea class="form-control" id="alamat_tek" name="alamat_tek" rows="4"  required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="/pelanggan/" class="btn btn-secondary">Kembali</a>
+            <a href="/teknisi/" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 </div>

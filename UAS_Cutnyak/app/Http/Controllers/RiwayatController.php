@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Riwayat;
+use App\Models\Teknisi;
+use App\Models\Pelanggan;
 
 class RiwayatController extends Controller
 {
@@ -11,7 +14,9 @@ class RiwayatController extends Controller
      */
     public function index()
     {
-        //
+        $nomor = 1;
+        $rit = Riwayat::all();
+        return view('riwayat.index',compact('nomor','rit'));
     }
 
     /**
@@ -19,7 +24,9 @@ class RiwayatController extends Controller
      */
     public function create()
     {
-        //
+        $pel = Pelanggan::all();
+        $tek = Teknisi::all();
+        return view('riwayat.form',compact('pel','tek'));
     }
 
     /**
@@ -27,7 +34,24 @@ class RiwayatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rit = new Riwayat();
+        $rit->kd_rit = $request->kd_rit;
+        $rit->nm_brg = $request->nm_brg;
+        $rit->merk_brg = $request->merk_brg;
+        $rit->jenis_brg = $request->jenis_brg;
+        $rit->pelanggans_id = $request->pelanggan;
+        $rit->teknisis_id = $request->teknisi;
+        $rit->tgl_per = $request->tgl_per;
+        $rit->tgl_sel = $request->tgl_sel;
+        $rit->harga = $request->harga;
+        $rit->jum= $request->jum;
+        $rit->foto = $request->foto->getClientOriginalName();
+        $rit->Ket= $request->Ket;
+        $rit->save();
+
+        $request->foto->move('foto',$request->foto->getClientOriginalName());
+
+        return redirect('/riwayat/');
     }
 
     /**
