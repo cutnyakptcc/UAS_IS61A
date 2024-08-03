@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\TeknisiController;
+use App\Http\Controllers\TransaksiController;
 use App\Models\Pelanggan;
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +49,13 @@ Route::post('/riwayat/store/', [RiwayatController::class, 'store'])->middleware(
 Route::get('/riwayat/edit/{id}', [RiwayatController::class, 'edit'])->middleware('auth');
 Route::put('/riwayat/{id}', [RiwayatController::class, 'update'])->middleware('auth');
 Route::delete('/riwayat/{id}', [RiwayatController::class, 'destroy'])->middleware('auth');
+
+// Route transaksi
+Route::get('/transaksi/', [TransaksiController::class, 'index'])->middleware('auth');
+Route::get('/transaksi/form/',[TransaksiController::class,'create'])->middleware('auth');
+Route::post('/transaksi/store/', [TransaksiController::class, 'store'])->middleware('auth');
+Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit'])->middleware('auth');
+Route::put('/transaksi/{id}', [TransaksiController::class, 'update'])->middleware('auth');
+Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy'])->middleware('auth');
+
 

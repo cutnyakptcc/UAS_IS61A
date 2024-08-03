@@ -46,7 +46,7 @@ class RiwayatController extends Controller
         $rit->harga = $request->harga;
         $rit->jum= $request->jum;
         $rit->foto = $request->foto->getClientOriginalName();
-        $rit->Ket= $request->Ket;
+        $rit->ket= $request->ket;
         $rit->save();
 
         $request->foto->move('foto',$request->foto->getClientOriginalName());
@@ -67,7 +67,10 @@ class RiwayatController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $rit = Riwayat::find($id);
+        $pel = Pelanggan::all();
+        $tek = Teknisi::all();
+        return view('riwayat.edit',compact('rit','pel','tek'));
     }
 
     /**
@@ -75,7 +78,24 @@ class RiwayatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $rit = Riwayat::find($id);
+        $rit->kd_rit = $request->kd_rit;
+        $rit->nm_brg = $request->nm_brg;
+        $rit->merk_brg = $request->merk_brg;
+        $rit->jenis_brg = $request->jenis_brg;
+        $rit->pelanggans_id = $request->pelanggan;
+        $rit->teknisis_id = $request->teknisi;
+        $rit->tgl_per = $request->tgl_per;
+        $rit->tgl_sel = $request->tgl_sel;
+        $rit->harga = $request->harga;
+        $rit->jum= $request->jum;
+        $rit->foto = $request->foto->getClientOriginalName();
+        $rit->ket= $request->ket;
+        $rit->save();
+
+        $request->foto->move('foto',$request->foto->getClientOriginalName());
+
+        return redirect('/riwayat/');
     }
 
     /**
@@ -83,6 +103,9 @@ class RiwayatController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $rit = Riwayat::find($id);
+        $rit->delete();
+
+        return redirect('/riwayat/');
     }
 }

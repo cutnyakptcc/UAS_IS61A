@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('harga');
             $table->string('jum');
             $table->string('foto');
-            $table->text('Ket');
+            $table->text('ket');
             $table->timestamps();
         });
     }

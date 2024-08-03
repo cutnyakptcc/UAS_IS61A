@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Riwayat;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -11,7 +13,9 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $nomor = 1;
+        $tra = Transaksi::all();
+        return view('transaksi.index',compact('nomor','tra'));
     }
 
     /**
@@ -19,7 +23,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        //
+        $rit = Riwayat::all();
+        return view('transaksi.form',compact('rit'));
     }
 
     /**
@@ -27,7 +32,15 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tra = new Transaksi();
+        $tra->nofak = $request->nofak;
+        $tra->riwayats_id = $request->riwayat;
+        $tra->bukti_pem = $request->bukti_pem->getClientOriginalName();
+        $tra->save();
+
+        $request->bukti_pem->move('bukti_pembayaran',$request->bukti_pem->getClientOriginalName());
+
+        return redirect('/transaksi/');
     }
 
     /**
