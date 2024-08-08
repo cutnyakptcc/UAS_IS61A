@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Riwayat;
+use App\Models\Pelanggan;
 use App\Models\Transaksi;
+use App\Models\Teknisi;
 use Illuminate\Http\Request;
 
 class TransaksiController extends Controller
@@ -16,6 +18,39 @@ class TransaksiController extends Controller
         $nomor = 1;
         $tra = Transaksi::all();
         return view('transaksi.index',compact('nomor','tra'));
+    }
+
+    /**
+    * Display the dashboard.
+     */
+    public function dashboard()
+    {
+        // Ambil data dari model
+        $totalTransaksi = Transaksi::count();
+        $totalPelanggan = Pelanggan::count();
+        $totalTeknisi = Teknisi::count();
+        $totalPendapatan = Transaksi::sum('jumlah');
+
+        // Data untuk grafik
+        $transaksiPerBulan = Transaksi::selectRaw('MONTH(created_at) as bulan, COUNT(*) as jumlah')
+            ->groupBy('bulan')
+            ->get()
+            ->pluck('jumlah', 'bulan')
+            ->toArray();
+
+        $transaksiLabels = array_keys($transaksiPerBulan);
+        $transaksiData = array_values($transaksiPerBulan);
+
+
+        // Kirim data ke view
+        return view('dashboard', compact(
+            'totalTransaksi',
+            'totalPelanggan',
+            'totalTeknisi',
+            'totalPendapatan',
+            'transaksiLabels',
+            'transaksiData',
+        ));
     }
 
     /**
@@ -75,3 +110,4 @@ class TransaksiController extends Controller
         //
     }
 }
+

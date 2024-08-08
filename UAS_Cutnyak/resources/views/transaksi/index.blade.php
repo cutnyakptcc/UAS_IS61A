@@ -43,7 +43,7 @@
                 <tr>
                     <td>{{ $nomor++ }}</td>
                     <td>{{ $item->nofak }}</td>
-                    <td>{{ $item->riwayats->kd_rit ?? 'N/A' }}</td>
+                    <td>{{ $item->riwayat->kd_rit ?? 'N/A' }}</td>
                     <td>
                         <img src="{{ asset('bukti_pembayaran/' . $item->bukti_pem) }}" width="100" alt="Bukti Pembayaran">
                     </td>
@@ -65,7 +65,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Kode Riwayat</td>
-                                                    <th scope="row">{{ $item->riwayats->kd_rit ?? 'N/A' }}</th>
+                                                    <th scope="row">{{ $item->riwayat->kd_rit ?? 'N/A' }}</th>
                                                 </tr>
                                                 <!-- Tambahkan field lain sesuai kebutuhan -->
                                                 <tr>

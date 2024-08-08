@@ -530,7 +530,7 @@
           <div class="content-side">
             <ul class="nav-main">
               <li class="nav-main-item">
-                <a class="nav-main-link" href="/home">
+                <a class="nav-main-link" href="/dashboard">
                   <i class="nav-main-link-icon fa fa-tachometer-alt"></i>
                   <span class="nav-main-link-name">Dashboard</span>
                 </a>

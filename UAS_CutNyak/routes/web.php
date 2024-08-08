@@ -57,5 +57,5 @@ Route::post('/transaksi/store/', [TransaksiController::class, 'store'])->middlew
 Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit'])->middleware('auth');
 Route::put('/transaksi/{id}', [TransaksiController::class, 'update'])->middleware('auth');
 Route::delete('/transaksi/{id}', [TransaksiController::class, 'destroy'])->middleware('auth');
-
+Route::get('/dashboard', [TransaksiController::class, 'dashboard'])->name('dashboard');
 

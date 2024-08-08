@@ -12,4 +12,8 @@ class Pelanggan extends Model
    {
        return $this->hasMany(Riwayat::class, 'teknisis_id');
    }
+   public function transaksis()
+   {
+       return $this->hasMany(Transaksi::class, 'transaksis_id');
+   }
 }

@@ -11,5 +11,9 @@ class Teknisi extends Model
     public function riwayats()
     {
         return $this->hasMany(Riwayat::class, 'pelanggans_id');
+    } 
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'transaksis_id');
     }
 }
